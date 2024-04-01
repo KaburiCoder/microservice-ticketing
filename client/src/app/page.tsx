@@ -1,30 +1,31 @@
+import { svrAxios } from "@/api/svr-axios";
 import { apiUrl } from "@/paths";
-import axios from "axios";
-import { headers } from "next/headers";
-import Image from "next/image";
 
-// export async function generateStaticParams({}) {
+export async function generateStaticParams() {
+  const { data } = await svrAxios().get(apiUrl.users.currentUser);
 
-// }
+  console.log("--data--", data);
 
-export default async function Home() {
-  const headersList = headers();
-
-  const copyHeaders: { [key: string]: string } = {};
-  const headersArray = Array.from(headersList.entries());
-  for (const [key, value] of headersArray) {
-    copyHeaders[key] = value;
-  }
-  console.log("s=-", copyHeaders);
-
-  const response = await axios.get(
-    "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local" +
-    apiUrl.currentUser,
+  return [
     {
-      headers: copyHeaders,
-    }
-  );
-  console.log("result:", await response.data);
+      user: data.currentUser,
+    },
+  ];
+}
 
-  return <div>{1}</div>;
+export default async function Home(props: any) {
+  console.log("props", props);
+
+  const { data } = await svrAxios().get(apiUrl.users.currentUser);
+  return data.currentUser ? (
+    <div>
+      <h1>로그인되어있음</h1>
+      {JSON.stringify(data.currentUser)}
+    </div>
+  ) : (
+    <div>
+      <h1>로그인 안됨</h1>
+      {JSON.stringify(data.currentUser)}
+    </div>
+  );
 }

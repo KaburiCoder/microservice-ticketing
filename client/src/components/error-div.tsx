@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function ErrorDiv({ errors }: { errors: any[] }) {
+export default function ErrorDiv({ errors }: { errors?: any[] }) {
+  if (!errors) return <></>;
+
   const errorComponent =
     errors.length > 0 ? (
       <div className="text-red-500 bg-red-100 flex flex-col">
