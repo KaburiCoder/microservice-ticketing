@@ -1,14 +1,19 @@
 "use client";
 import useRequest from "@/hooks/use-request";
 import { apiUrl } from "@/paths";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function LogoutPage() {
+  const { push, refresh } = useRouter();
   const { doRequest } = useRequest({
     url: apiUrl.users.signout,
     method: "post",
     body: {},
-    onSuccess: () => (window.location.href = "/"),
+    onSuccess: () => {
+      push("/");
+      refresh();
+    },
   });
 
   useEffect(() => {

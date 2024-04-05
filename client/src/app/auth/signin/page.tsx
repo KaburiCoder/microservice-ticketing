@@ -1,11 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { startTransition, useState } from "react";
 import useRequest from "@/hooks/use-request";
 import { useRouter } from "next/navigation";
 import { apiUrl } from "@/paths";
-
 export default function SigninPage() {
-  const { push } = useRouter();
+  const { push, refresh } = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { doRequest, errorComponent } = useRequest({
@@ -15,7 +14,12 @@ export default function SigninPage() {
       email,
       password,
     },
-    onSuccess: () => (window.location.href = "/"),
+    onSuccess: () => {
+      startTransition(() => {
+        push("/");
+        refresh();
+      });
+    },
   });
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

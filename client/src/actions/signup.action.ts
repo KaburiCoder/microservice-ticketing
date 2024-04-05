@@ -1,3 +1,4 @@
+"use server";
 import { svrAxios } from "@/api/svr-axios";
 // import { svrAxios } from "@/api/svr-axios";
 import { apiUrl } from "@/paths";

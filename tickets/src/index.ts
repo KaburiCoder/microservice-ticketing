@@ -10,11 +10,10 @@ const start = async () => {
   }
 
   try {
-    await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Connect MongoDb");
   } catch (err) { }
   app.listen(3000, () => {
-    console.log("JWT_KEY", process.env.JWT_KEY);
     console.log("Listening on port 3000!!!!!!!!");
   });
 };

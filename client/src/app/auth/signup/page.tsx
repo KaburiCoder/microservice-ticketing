@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { apiUrl } from "@/paths";
 
 export default function SignupPage() {
+  const { push, refresh, prefetch } = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { doRequest, errorComponent } = useRequest({
@@ -15,7 +16,8 @@ export default function SignupPage() {
       password,
     },
     onSuccess: () => {
-      window.location.href = "/";
+      push("/");
+      refresh();
     },
   });
 
