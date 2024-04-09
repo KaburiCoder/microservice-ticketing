@@ -4,7 +4,7 @@ import {
   NotFoundError,
   requireAuth,
   validateRequest,
-} from "ms-sgtickets-common";
+} from "ms-sgtickets-common2";
 import { Ticket } from "../models/tickets";
 import { body } from "express-validator";
 

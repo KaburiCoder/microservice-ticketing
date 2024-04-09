@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import { requireAuth, validateRequest } from "ms-sgtickets-common";
+import { requireAuth, validateRequest } from "ms-sgtickets-common2";
 import { Ticket } from "../models/tickets";
 
 const router = express.Router();

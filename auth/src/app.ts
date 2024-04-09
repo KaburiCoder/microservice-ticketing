@@ -7,7 +7,7 @@ import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
-import { errorHandler, NotFoundError } from "ms-sgtickets-common";
+import { errorHandler, NotFoundError } from "ms-sgtickets-common2";
 
 const app = express();
 app.set("trust proxy", true);

@@ -1,6 +1,6 @@
 import express, { Response, Request } from "express";
 import { body } from "express-validator";
-import { validateRequest, BadRequestError } from "ms-sgtickets-common";
+import { validateRequest, BadRequestError } from "ms-sgtickets-common2";
 import { User } from "../models/user";
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";

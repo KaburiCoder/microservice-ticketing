@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import {
   NotFoundError,
-} from "ms-sgtickets-common";
+} from "ms-sgtickets-common2";
 import { Ticket } from "../models/tickets";
 
 const router = express.Router();

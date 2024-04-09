@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { currentUser } from "ms-sgtickets-common";
+import { currentUser } from "ms-sgtickets-common2";
 
 const router = express.Router();
 
